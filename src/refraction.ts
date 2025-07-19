@@ -1,18 +1,24 @@
+interface RefractionParams {
+	/** Sphere in dioptres */
+	sph: number;
+	/** Cylinder in dioptres */
+	cyl?: number;
+	/** Axis in degrees */
+	axis?: number;
+	/** Vertex distance in mm */
+	vd?: number;
+}
+
 /**
  * Refraction
  */
-class Refraction {
+class Refraction implements RefractionParams {
 	#sph: number;
 	#cyl: number;
 	#axis: number;
 	#vd: number;
 
-	constructor(params: {
-		sph: number;
-		cyl?: number;
-		axis?: number;
-		vd?: number;
-	}) {
+	constructor(params: RefractionParams) {
 		this.#sph = params.sph;
 		this.#cyl = params.cyl ?? 0;
 		this.#axis = params.cyl === 0 ? 0 : this.#normaliseAxis(params.axis ?? 180);
@@ -43,6 +49,10 @@ class Refraction {
 	}
 	get vd(): number {
 		return Math.round(this.#vd);
+	}
+
+	static new(params: RefractionParams): Refraction {
+		return new Refraction(params);
 	}
 
 	#roundQuarterDioptre(n: number) {
