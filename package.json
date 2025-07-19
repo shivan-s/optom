@@ -1,0 +1,24 @@
+{
+	"name": "optom",
+	"version": "1.0.0",
+	"description": "Code for optometrists",
+	"main": "index.js",
+	"scripts": {
+		"test": "vitest",
+		"format": "biome format --write"
+	},
+	"keywords": [
+		"refraction",
+		"optometry"
+	],
+	"author": "Shivan Sivakumaran",
+	"license": "ISC",
+	"packageManager": "pnpm@10.13.1",
+	"dependencies": {
+		"typescript": "^5.8.3"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.1.2",
+		"vitest": "^3.2.4"
+	}
+}
